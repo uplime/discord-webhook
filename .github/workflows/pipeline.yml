@@ -17,4 +17,4 @@ jobs:
 
       - uses: ./
         with:
-          api-key: "correct-horse-battery-staple"
+          webhook-url: ${{ secrets.DISCORD_WEBHOOK_URL }}

@@ -1,13 +1,21 @@
 ---
 
-name: "Discord Webhook"
-description: "Write to a Discord webhook."
+name: Discord Webhook
+description: Write to a Discord webhook.
 
 inputs:
-  api-key:
-    description: "API key for authenticating with Discord."
-    required: true
+  webhook-url:
+    description: The webhook endpoint to write to.
+    required: yes
+
+  username:
+    description: Username to identify as with Discord.
+    default: Action Bot 900
+
+  message:
+    description: Message to write to the webhook.
+    default: Hello, world!
 
 runs:
-  using: "docker"
-  image: "Dockerfile"
+  using: docker
+  image: Dockerfile

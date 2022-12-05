@@ -1,10 +1,13 @@
 import os
 import requests
 
-api_key = os.getenv("INPUT_API-KEY")
+webhook_url = os.getenv("INPUT_WEBHOOK-URL")
+username = os.getenv("INPUT_USERNAME")
+message = os.getenv("INPUT_MESSAGE")
 
-if api_key is None:
-  print(">>>>>>>>>>> got in here")
-  api_key = os.getenv("INPUT_API_KEY")
+response = requests.post(webhook_url, data={
+  "username": username,
+  "contents": message
+})
 
-print(api_key)
+print(response)
