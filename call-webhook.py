@@ -7,7 +7,7 @@ message = os.getenv("INPUT_MESSAGE")
 
 response = requests.post(webhook_url, data={
   "username": username,
-  "contents": message
+  "content": message
 })
 
 print(response)
