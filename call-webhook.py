@@ -1,4 +1,10 @@
+import os
 import requests
-import sys
 
-print(sys.argv)
+api_key = os.getenv("INPUT_API-KEY")
+
+if api_key is None:
+  print(">>>>>>>>>>> got in here")
+  api_key = os.getenv("INPUT_API_KEY")
+
+print(api_key)
