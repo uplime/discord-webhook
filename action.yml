@@ -1,0 +1,13 @@
+name: "Discord Webhook"
+description: "Write to a Discord webhook."
+
+inputs:
+  api-key:
+    description: "API key for authenticating with Discord."
+    required: true
+
+runs:
+  using: "docker"
+  image: "Dockerfile"
+  args:
+    - ${{ inputs.api-key }}
