@@ -25,8 +25,8 @@ if len(used_msgs) == 0:
 
 webhook = discohook.webhook.Webhook(webhook_url, username=user, avatar=pfp)
 
-for kind, msg in msgs:
-  if msg is None:
+for kind in msgs:
+  if msgs[kind] is None:
     next
 
   fn = getattr(webhook, kind)
@@ -35,7 +35,7 @@ for kind, msg in msgs:
     logger.warn(f"Could not find suitable message kind for {kind}")
     next
 
-  res = fn(msg)
+  res = fn(msgs[kind])
 
   if res.ok():
     logger.notice("webhook payload successfully delivered.")
