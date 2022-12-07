@@ -1,4 +1,4 @@
 FROM python:3.9
-COPY call-webhook.py ./call-webhook.py
+COPY app /app
 RUN ["pip3.9", "install", "requests"]
-ENTRYPOINT ["python3.9", "./call-webhook.py"]
+ENTRYPOINT ["python3.9", "/app/driver.py"]
