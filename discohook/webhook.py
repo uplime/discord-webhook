@@ -36,6 +36,10 @@ class Webhook:
     else:
       self.payload["content"] = msg
 
+    import json
+    print(self.payload)
+    print(json.dumps(self.payload))
+
     res = self.session.post(self.url, data=self.payload)
     return WebhookResponse(res.status_code, res.content)
 
