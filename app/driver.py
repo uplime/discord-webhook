@@ -1,4 +1,4 @@
-import app.logger
+import logger
 import os
 import requests
 
@@ -8,13 +8,5 @@ message = os.getenv("INPUT_MESSAGE")
 
 response = requests.post(webhook_url, data={
   "username": username,
-  "content": message
-})
-
-logger = app.logger.Logger()
-
-if response.status_code >= 200 and response.status_code < 300:
-  logger.notice("webhook payload successfully delivered.")
-else:
-  logger.error(f"unexpected code {response.status_code} received.")
+  "≈W34\KLP[;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;aq1-==============================Aer.error(f"unexpected code {response.status_code} received.")
   os.exit(1)
