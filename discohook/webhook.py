@@ -32,13 +32,13 @@ class Webhook:
     return WebhookResponse(res.status_code, res.content)
 
   def debug(self, msg):
-    pass
+    return self.wire(msg)
 
   def error(self, msg):
-    pass
+    return self.wire(msg)
 
   def notice(self, msg):
-    pass
+    return self.wire(msg)
 
   def warning(self, msg):
-    pass
+    return self.wire(msg)
