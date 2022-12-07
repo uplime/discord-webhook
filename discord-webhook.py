@@ -2,6 +2,9 @@ import discohook.logger
 import discohook.webhook
 import os
 
+def make_pair(msg):
+  return [msg, os.getenv(f"INPUT_{msg.upper()}")]
+
 webhook_url = os.getenv("INPUT_WEBHOOK-URL")
 user = os.getenv("INPUT_USERNAME")
 pfp = os.getenv("INPUT_AVATAR")
@@ -11,10 +14,7 @@ msg_types = [
   "notice", "warn"
 ]
 
-msgs = dict(msg_types.map(lambda msg:
-  [msg, os.getenv(f"INPUT_{msg.upper()}")]
-))
-
+msgs = dict(map(make_pair, msg_types))
 used_msgs = filter(lambda msg: msg is not None, msgs.values())
 logger = discohook.logger.Logger()
 
