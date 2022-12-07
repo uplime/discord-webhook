@@ -45,7 +45,15 @@ for kind in msgs:
     logger.warn(f"Could not find suitable message kind for {kind}")
     next
 
+  print(fn_name)
+  print(fn)
+  print(kind)
+  print(msgs)
+  print(webhook.wire)
+
   res = fn(msgs[kind])
+
+  print(res)
 
   if res.ok():
     logger.notice("webhook payload successfully delivered.")
