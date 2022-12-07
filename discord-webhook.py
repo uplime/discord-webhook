@@ -3,8 +3,13 @@ import discohook.webhook
 import os
 import sys
 
-def make_pair(msg):
-  return [msg, os.getenv(f"INPUT_{msg.upper()}")]
+def make_pair(kind):
+  msg = os.getenv(f"INPUT_{kind.upper()}")
+
+  if msg == "":
+    msg = None
+
+  return [kind, msg]
 
 webhook_url = os.getenv("INPUT_WEBHOOK-URL")
 user = os.getenv("INPUT_USERNAME")
