@@ -1,4 +1,4 @@
-FROM python:3.9
+FROM python:3.9-alpine
 COPY discord-webhook.py /app/discord-webhook.py
 COPY discohook/* /app/discohook/
 RUN ["pip3.9", "install", "requests"]
