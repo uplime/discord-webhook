@@ -32,7 +32,7 @@ webhook = discohook.webhook.Webhook(webhook_url, username=user, avatar=pfp)
 
 for kind in msgs:
   if msgs[kind] is None:
-    next
+    continue
 
   fn_name = kind
 
@@ -43,20 +43,11 @@ for kind in msgs:
 
   if fn is None:
     logger.warn(f"Could not find suitable message kind for {kind}")
-    next
-
-  print(fn_name)
-  print(fn)
-  print(kind)
-  print(msgs)
-  print(webhook.wire)
+    continue
 
   res = fn(msgs[kind])
-
-  print(res)
 
   if res.ok():
     logger.notice("webhook payload successfully delivered.")
   else:
-    logger.error(f"unexpected code {res.code} received.")
-    sys.exit(1)
+    logger.error(f"Payload for {kind} received unexpected code {res.code}.")
