@@ -1,3 +1,4 @@
+import discohook.logger
 import os
 import requests
 
@@ -10,8 +11,10 @@ response = requests.post(webhook_url, data={
   "content": message
 })
 
+logger = discohook.logger.Logger()
+
 if response.status_code >= 200 and response.status_code < 300:
-  print("::notice ::webhook payload successfully delivered.")
+  logger.notice("webhook payload successfully delivered.")
 else:
-  print(f"::error ::unexpected code {response.status_code} received.")
+  logger.error(f"unexpected code {response.status_code} received.")
   os.exit(1)
