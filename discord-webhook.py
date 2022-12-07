@@ -24,9 +24,6 @@ msgs = dict(map(make_pair, msg_kinds))
 used_msgs = list(filter(lambda msg: msg is not None, msgs.values()))
 logger = discohook.logger.Logger()
 
-print(msgs)
-print(used_msgs)
-
 if len(used_msgs) == 0:
   logger.error("No messages given.")
   sys.exit(1)

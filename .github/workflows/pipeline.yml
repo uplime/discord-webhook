@@ -19,3 +19,4 @@ jobs:
         with:
           webhook-url: ${{ secrets.DISCORD_WEBHOOK_URL }}
           username: Build Reporter
+          message: The build succeeded!
