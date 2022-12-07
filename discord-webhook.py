@@ -19,6 +19,9 @@ msgs = dict(map(make_pair, msg_kinds))
 used_msgs = list(filter(lambda msg: msg is not None, msgs.values()))
 logger = discohook.logger.Logger()
 
+print(msgs)
+print(used_msgs)
+
 if len(used_msgs) == 0:
   logger.error("No messages given.")
   sys.exit(1)
@@ -29,7 +32,12 @@ for kind in msgs:
   if msgs[kind] is None:
     next
 
-  fn = getattr(webhook, kind)
+  fn_name = kind
+
+  if fn_name == "message":
+    fn_name = "wire"
+
+  fn = getattr(webhook, fn_name)
 
   if fn is None:
     logger.warn(f"Could not find suitable message kind for {kind}")
