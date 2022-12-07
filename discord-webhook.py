@@ -12,7 +12,7 @@ webhook_opts = {
 }
 
 logger = discohook.logger.Logger()
-webhook = discohook.webhook.webhook(webhook_url, **webhook_opts)
+webhook = discohook.webhook.Webhook(webhook_url, **webhook_opts)
 res = webhook.wire(message)
 
 if res.ok():
