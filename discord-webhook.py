@@ -8,12 +8,10 @@ message = os.getenv("INPUT_MESSAGE")
 avatar = os.getenv("INPUT_AVATAR")
 
 webhook_opts = {
-  "user": username,
-  "avatar": avatar
+  "user": username, "avatar": avatar
 }
 
 logger = discohook.logger.Logger()
-logger.warn(f"{wait_ask} {type(wait_ask)}")
 webhook = discohook.webhook.webhook(webhook_url, **webhook_opts)
 res = webhook.wire(message)
 
