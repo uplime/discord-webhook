@@ -15,7 +15,7 @@ msg_types = [
 ]
 
 msgs = dict(map(make_pair, msg_types))
-used_msgs = filter(lambda msg: msg is not None, msgs.values())
+used_msgs = list(filter(lambda msg: msg is not None, msgs.values()))
 logger = discohook.logger.Logger()
 
 if len(used_msgs) == 0:
