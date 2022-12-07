@@ -15,6 +15,9 @@ webhook_url = os.getenv("INPUT_WEBHOOK-URL")
 user = os.getenv("INPUT_USERNAME")
 pfp = os.getenv("INPUT_AVATAR")
 
+if pfp == "":
+  pfp = None
+
 msg_kinds = [
   "message", "debug", "error",
   "notice", "warn"
