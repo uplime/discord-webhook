@@ -9,9 +9,9 @@ class WebhookResponse:
     return self.code >= 200 and self.code < 300
 
 class Webhook:
-  def __init__(self, url, user=None, avatar=None):
+  def __init__(self, url, username=None, avatar=None):
     self.url = url
-    self.user = user
+    self.username = user
     self.avatar = avatar
     self.session = requests.Session()
 
@@ -21,7 +21,7 @@ class Webhook:
 
   def wire(self, msg):
     data = {
-      "username": self.user,
+      "username": self.username,
       "content": msg
     }
 

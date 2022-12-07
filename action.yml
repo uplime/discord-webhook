@@ -12,12 +12,23 @@ inputs:
     description: Username to identify as with Discord.
     default: Action Bot 900
 
-  message:
-    description: Message to write to the webhook.
-    default: Hello, world!
-
   avatar:
     description: URL of the avatar to use for the message.
+
+  message:
+    description: Send a plain message to the webhook.
+
+  debug:
+    description: Send a debug message to the webhook.
+
+  error:
+    description: Send an error message to the webhook.
+
+  notice:
+    description: Send an informational notice to the webhook.
+
+  warn:
+    description: Send a warning message to the webhook.
 
 runs:
   using: docker
