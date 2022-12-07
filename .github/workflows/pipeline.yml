@@ -9,7 +9,7 @@ on:
 
 jobs:
   manufacture:
-    runs-on: alpine-latest
+    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout
