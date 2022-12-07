@@ -8,8 +8,8 @@ on:
       - stable
 
 jobs:
-  deploy:
-    runs-on: ubuntu-latest
+  manufacture:
+    runs-on: alpine-latest
 
     steps:
       - name: Checkout
