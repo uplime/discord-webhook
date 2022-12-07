@@ -42,11 +42,11 @@ class Webhook:
   def debug(self, msg, title=None):
     return self.wire(msg, embed=True, title=title)
 
-  def error(self, msg):
+  def error(self, msg, title=None):
     return self.wire(msg, embed=True, title=title)
 
-  def notice(self, msg):
+  def notice(self, msg, title=None):
     return self.wire(msg, embed=True, color=5763719, title=title)
 
-  def warning(self, msg):
+  def warning(self, msg, title=None):
     return self.wire(msg, embed=True, title=title)
