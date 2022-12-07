@@ -16,6 +16,9 @@ inputs:
     description: Message to write to the webhook.
     default: Hello, world!
 
+  avatar:
+    description: URL of the avatar to use for the message.
+
 runs:
   using: docker
   image: Dockerfile

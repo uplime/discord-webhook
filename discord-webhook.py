@@ -1,20 +1,24 @@
 import discohook.logger
+import discohook.webhook
 import os
-import requests
 
 webhook_url = os.getenv("INPUT_WEBHOOK-URL")
 username = os.getenv("INPUT_USERNAME")
 message = os.getenv("INPUT_MESSAGE")
+avatar = os.getenv("INPUT_AVATAR")
 
-response = requests.post(webhook_url, data={
-  "username": username,
-  "content": message
-})
+webhook_opts = {
+  "user": username,
+  "avatar": avatar
+}
 
 logger = discohook.logger.Logger()
+logger.warn(f"{wait_ask} {type(wait_ask)}")
+webhook = discohook.webhook.webhook(webhook_url, **webhook_opts)
+res = webhook.wire(message)
 
-if response.status_code >= 200 and response.status_code < 300:
+if res.ok():
   logger.notice("webhook payload successfully delivered.")
 else:
-  logger.error(f"unexpected code {response.status_code} received.")
+  logger.error(f"unexpected code {res.code} received.")
   os.exit(1)

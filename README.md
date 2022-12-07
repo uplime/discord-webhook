@@ -16,6 +16,10 @@ Username to identify as with Discord.
 
 Message to write to the webhook.
 
+  - `avatar`
+
+URL of the avatar to use for the message.
+
 ## Example usage
 
 ```yaml
@@ -24,4 +28,5 @@ with:
   webhook-url: https://discord.com/api/webhooks/123457890/correct-horse-battery-staple
   username: Action Bot 900
   message: Hello, world!
+  avatar: https://cabbages.com/my.png
 ```
