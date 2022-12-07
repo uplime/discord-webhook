@@ -11,7 +11,7 @@ class WebhookResponse:
 class Webhook:
   def __init__(self, url, username=None, avatar=None):
     self.url = url
-    self.username = user
+    self.username = username
     self.avatar = avatar
     self.session = requests.Session()
 
