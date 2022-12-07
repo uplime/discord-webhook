@@ -29,7 +29,7 @@ class Webhook:
       data["avatar_url"] = self.avatar
 
     res = self.session.post(self.url, data=data)
-    return WebhookResponse(res.status_code, res.body)
+    return WebhookResponse(res.status_code, res.content)
 
   def debug(self, msg):
     pass
