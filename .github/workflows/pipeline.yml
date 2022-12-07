@@ -19,4 +19,6 @@ jobs:
         with:
           webhook-url: ${{ secrets.DISCORD_WEBHOOK_URL }}
           username: Build Reporter
-          message: The build succeeded!
+          notice: |
+            Repository: [uplime/discord-webhook](https://github.com/uplime/discord-webhook)
+            Status: Success
