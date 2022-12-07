@@ -1,5 +1,13 @@
 import requests
 
+class WebhookResponse:
+  def __init__(self, code, msg):
+    self.code = code
+    self.msg = msg
+
+  def ok(self):
+    return self.code >= 200 and self.code < 300
+
 class Webhook:
   def __init__(self, url, user=None, avatar=None):
     self.url = url
@@ -20,7 +28,8 @@ class Webhook:
     if self.avatar is None:
       data["avatar_url"] = self.avatar
 
-    self.session.post(self.url, data=data)
+    res = self.session.post(self.url, data=data)
+    return WebhookResponse(res.status_code, res.body)
 
   def debug(self, msg):
     pass
@@ -33,22 +42,3 @@ class Webhook:
 
   def warning(self, msg):
     pass
-
-
-
-response = requests.post(webhook_url, data={
-  "username": username,
-  "content": message
-})
-
-
-
-
-message = os.getenv("INPUT_MESSAGE")
-avatar_url
-
-
-
-s = requests.Session()
-s.auth = ('user', 'pass')
-s.headers.update({'x-test': 'true'})
