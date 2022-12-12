@@ -39,6 +39,6 @@ uses: uplime/discord-webhook@v1.1
 with:
   url: https://discord.com/api/webhooks/123457890/correct-horse-battery-staple
   level: error
-  message: "I'm Afraid I Can't Do That, Dave."
+  message: "I'm afraid I can't do that, Dave."
   format: yes
 ```
