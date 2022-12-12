@@ -37,7 +37,7 @@ else:
 
 try:
   hook = discohook.webhook.Webhook(url, user=usr, avatar=pfp)
-  res = hook.wire(kind(msg, fmt=fmt, ci=ci), title=ttl)
+  res = hook.wire(kind(msg, fmt=fmt), title=ttl)
 
   if res.ok():
     logger.notice("Webhook payload was delivered successfully.")
