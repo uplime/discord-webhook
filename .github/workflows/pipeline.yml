@@ -17,8 +17,36 @@ jobs:
 
       - uses: ./
         with:
-          webhook-url: ${{ secrets.DISCORD_WEBHOOK_URL }}
-          username: Build Reporter
-          notice: |
-            Repository: [uplime/discord-webhook](https://github.com/uplime/discord-webhook)
-            Status: Success
+          url: ${{ secrets.DISCORD_WEBHOOK_URL }}
+          name: Build Reporter
+          level: debug
+          title: Build Status
+          message: This is a debug message.
+          format: yes
+
+      - uses: ./
+        with:
+          url: ${{ secrets.DISCORD_WEBHOOK_URL }}
+          name: Build Reporter
+          level: notice
+          title: Build Status
+          message: This is a notice message.
+          format: yes
+
+      - uses: ./
+        with:
+          url: ${{ secrets.DISCORD_WEBHOOK_URL }}
+          name: Build Reporter
+          level: warning
+          title: Build Status
+          message: This is a warning message.
+          format: yes
+
+      - uses: ./
+        with:
+          url: ${{ secrets.DISCORD_WEBHOOK_URL }}
+          name: Build Reporter
+          level: error
+          title: Build Status
+          message: This is an error message.
+          format: yes

@@ -1,56 +1,55 @@
+import discohook.kinds
 import discohook.logger
+import discohook.util
 import discohook.webhook
 import os
-import sys
 
-def make_pair(kind):
-  msg = os.getenv(f"INPUT_{kind.upper()}")
+url = discohook.util.lookup("url")
+usr = discohook.util.lookup("name")
+pfp = discohook.util.lookup("avatar")
+lvl = discohook.util.lookup("level")
+fmt = discohook.util.lookup("format")
+ttl = discohook.util.lookup("title")
+msg = discohook.util.lookup("message")
 
-  if msg == "":
-    msg = None
+logger.debug(f"Webhook endpoint is {url}")
+logger.debug(f"Username for payload is {usr}")
+logger.debug(f"Avatar profile for payload is {pfp}")
+logger.debug(f"Webhook level is {lvl}")
+logger.debug("Github notification format is ", end="")
 
-  return [kind, msg]
+if fmt:
+  logger.debug("enabled.")
+else:
+  logger.debug("disabled.")
 
-webhook_url = os.getenv("INPUT_WEBHOOK-URL")
-user = os.getenv("INPUT_USERNAME")
-pfp = os.getenv("INPUT_AVATAR")
+logger.debug(f"Title for payload is {ttl}")
+logger.debug(f"Payload message is {msg}")
 
-if pfp == "":
-  pfp = None
+kind = discohook.kinds.WebhookMessage
 
-msg_kinds = [
-  "message", "debug", "error",
-  "notice", "warn"
-]
+if lvl not in discohook.kinds.WEBHOOK_KINDS:
+  logger.warning(f"Unknown message kind {lvl}")
+  logger.warning("Using a plain payload.")
+else:
+  kind = discohook.kinds.WEBHOOK_KINDS[lvl]
 
-msgs = dict(map(make_pair, msg_kinds))
-used_msgs = list(filter(lambda msg: msg is not None, msgs.values()))
-logger = discohook.logger.Logger()
-
-if len(used_msgs) == 0:
-  logger.error("No messages given.")
-  sys.exit(1)
-
-webhook = discohook.webhook.Webhook(webhook_url, username=user, avatar=pfp)
-
-for kind in msgs:
-  if msgs[kind] is None:
-    continue
-
-  fn_name = kind
-
-  if fn_name == "message":
-    fn_name = "wire"
-
-  fn = getattr(webhook, fn_name)
-
-  if fn is None:
-    logger.warn(f"Could not find suitable message kind for {kind}")
-    continue
-
-  res = fn(msgs[kind])
+try:
+  hook = discohook.webhook.Webhook(url, user=usr, avatar=pfp)
+  res = hook.wire(kind(msg, fmt=fmt, ci=ci), title=ttl)
 
   if res.ok():
-    logger.notice("webhook payload successfully delivered.")
+    logger.notice("Webhook payload was delivered successfully.")
   else:
-    logger.error(f"Payload for {kind} received unexpected code {res.code}.")
+    logger.error(f"Received unexpected error {res.code}: {res.msg}.")
+
+except discohook.webhook.ErrorWebhookTimeout:
+  logger.error("Connection timed out while trying to connect to Discord.")
+except discohook.webhook.ErrorRequestProblem as err:
+  logger.error(f"There is likely an issue with your settings for this Action.")
+  logger.error(f"Received error code {err.code}: {err.msg}.")
+
+if res.ok():
+  logger.notice("webhook payload successfully delivered.")
+else:
+  logger.error(f"Payload for {kind} received unexpected code {res.code}.")

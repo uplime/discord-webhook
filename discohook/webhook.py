@@ -1,5 +1,13 @@
 import requests
 
+class ErrorWebhookTimeout(requests.exceptions.ConnectTimeout):
+  pass
+
+class ErrorRequestProblem(Exception):
+  def __init__(self, code, msg):
+    self.code = code
+    self.msg = msg
+
 class WebhookResponse:
   def __init__(self, code, msg):
     self.code = code
@@ -19,9 +27,6 @@ class Webhook:
       "avatar_url": self.avatar
     }
 
-#    if self.avatar is not None:
-#      self.payload["avatar_url"] = self.avatar
-
     self.session = requests.Session()
 
     self.session.headers.update({
@@ -36,12 +41,16 @@ class Webhook:
     else:
       self.payload["content"] = msg
 
-    import json
-    print(self.payload)
-    print(json.dumps(self.payload))
+    try:
+      res = self.session.post(self.url, json=self.payload, timeout=5)
 
-    res = self.session.post(self.url, data=self.payload)
-    return WebhookResponse(res.status_code, res.content)
+      if res.status_code >= 400 and res.status_code < 500:
+        raise ErrorRequestProblem(res.status_code, res.content)
+
+      return WebhookResponse(res.status_code, res.content)
+
+    except requests.exceptions.ConnectTimeout:
+      raise ErrorWebhookTimeout
 
   def debug(self, msg, title=None):
     return self.wire(msg, embed=True, title=title)

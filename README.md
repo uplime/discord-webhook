@@ -4,48 +4,41 @@ GitHub Action for writing to a Discord Webhook.
 
 ## Inputs
 
-  - `webhook-url`
+### `url`
 
 **Required** The webhook endpoint to write to.
 
-  - `username`
+### `name`
 
-Username to identify as with Discord.
+The username to identify as with Discord.
 
-  - `avatar`
+### `avatar`
 
-URL of the avatar to use for the message.
+The URL of the avatar to use for the message.
 
-  - `message`
+### `level`
 
-Send a plain message to the webhook.
+The notification level to use.
 
-  - `debug`
+### `title`
 
-Send a debug message to the webhook.
+Set the title of the notification.
 
-  - `error`
+### `message`
 
-Send an error message to the webhook.
+**Required** Send a plain message to the webhook.
 
-  - `notice`
+### `format`
 
-Send an informational notice to the webhook.
-
-  - `warn`
-
-Send a warning message to the webhook.
-
-> N.B. At least one of the following must be used: message, debug, error,
-> notice, or warn.
+Apply the standard message template.
 
 ## Example usage
 
 ```yaml
 uses: actions/discord-webhook@v1
 with:
-  webhook-url: https://discord.com/api/webhooks/123457890/correct-horse-battery-staple
-  username: Action Bot 900
-  avatar: https://cabbages.com/my.png
-  warn: "I'm Afraid I Can't Do That, Dave."
+  url: https://discord.com/api/webhooks/123457890/correct-horse-battery-staple
+  level: error
+  message: "I'm Afraid I Can't Do That, Dave."
+  format: yes
 ```

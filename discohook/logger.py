@@ -11,5 +11,5 @@ class Logger:
   def notice(self, msg):
     self.emit("notice", msg)
 
-  def warn(self, msg):
+  def warning(self, msg):
     self.emit("warning", msg)

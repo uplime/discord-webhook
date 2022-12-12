@@ -4,31 +4,30 @@ name: Discord Webhook
 description: Write to a Discord webhook.
 
 inputs:
-  webhook-url:
+  url:
     description: The webhook endpoint to write to.
     required: yes
 
-  username:
-    description: Username to identify as with Discord.
+  name:
+    description: The username to identify as with Discord.
     default: Action Bot 900
 
   avatar:
-    description: URL of the avatar to use for the message.
+    description: The URL of the avatar to use for the message.
+
+  level:
+    description: The notification level to use.
+
+  title:
+    description: Set the title of the notification.
 
   message:
-    description: Send a plain message to the webhook.
+    description: The message contents to send.
+    required: yes
 
-  debug:
-    description: Send a debug message to the webhook.
-
-  error:
-    description: Send an error message to the webhook.
-
-  notice:
-    description: Send an informational notice to the webhook.
-
-  warn:
-    description: Send a warning message to the webhook.
+  format:
+    description: Apply the standard message template.
+    default: no
 
 runs:
   using: docker
