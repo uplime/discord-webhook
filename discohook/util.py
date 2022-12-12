@@ -1,7 +1,7 @@
 import os
 
 def lookup(key, prefix="INPUT"):
-  val = os.getenv(key, f"{prefix}_{key.upper()}")
+  val = os.getenv(f"{prefix}_{key.upper()}", None)
   tested_val = val.lower()
 
   if tested_val == "":
