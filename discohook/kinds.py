@@ -9,13 +9,13 @@ class WebhookMessage:
     return None # None
 
   def asGithub(self):
-    actor = discohook.util.lookup("TRIGGERING_ACTOR", prefix="GITHUB")
-    attempt = discohook.util.lookup("RUN_ATTEMPT", prefix="GITHUB")
-    repo = discohook.util.lookup("REPOSITORY", prefix="GITHUB")
-    run = discohook.util.lookup("RUN_NUMBER", prefix="GITHUB")
-    run_id = discohook.util.lookup("RUN_ID", prefix="GITHUB")
-    sha = discohook.util.lookup("SHA", prefix="GITHUB")
-    url = discohook.util.lookup("SERVER_URL", prefix="GITHUB")
+    actor = discohook.util.lookup("triggering_actor", prefix="GITHUB")
+    attempt = discohook.util.lookup("run_attempt", prefix="GITHUB")
+    repo = discohook.util.lookup("repository", prefix="GITHUB")
+    run = discohook.util.lookup("run_number", prefix="GITHUB")
+    run_id = discohook.util.lookup("run_id", prefix="GITHUB")
+    sha = discohook.util.lookup("sha", prefix="GITHUB")
+    url = discohook.util.lookup("server_url", prefix="GITHUB")
 
     repo_url = f"{url}/{repo}"
     commit_url = f"{repo_url}/commit"
