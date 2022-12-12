@@ -19,14 +19,6 @@ jobs:
         with:
           url: ${{ secrets.DISCORD_WEBHOOK_URL }}
           name: Build Reporter
-          title: Build Status
-          message: This is a regular message.
-          format: yes
-
-      - uses: ./
-        with:
-          url: ${{ secrets.DISCORD_WEBHOOK_URL }}
-          name: Build Reporter
           level: debug
           title: Build Status
           message: This is a debug message.

@@ -17,6 +17,7 @@ inputs:
 
   level:
     description: The notification level to use.
+    default: notice
 
   title:
     description: Set the title of the notification.
