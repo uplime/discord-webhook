@@ -21,7 +21,7 @@ jobs:
           name: Build Reporter
           level: debug
           title: Build Status
-          message: This is a debug message.
+          message: This is a formatted debug message.
           format: yes
 
       - uses: ./
@@ -30,7 +30,7 @@ jobs:
           name: Build Reporter
           level: notice
           title: Build Status
-          message: This is a notice message.
+          message: This is a formatted notice message.
           format: yes
 
       - uses: ./
@@ -39,7 +39,7 @@ jobs:
           name: Build Reporter
           level: warning
           title: Build Status
-          message: This is a warning message.
+          message: This is a formatted warning message.
           format: yes
 
       - uses: ./
@@ -48,5 +48,37 @@ jobs:
           name: Build Reporter
           level: error
           title: Build Status
-          message: This is an error message.
+          message: This is a formatted error message.
           format: yes
+
+      - uses: ./
+        with:
+          url: ${{ secrets.DISCORD_WEBHOOK_URL }}
+          name: Build Reporter
+          level: debug
+          title: Build Status
+          message: This is a debug message.
+
+      - uses: ./
+        with:
+          url: ${{ secrets.DISCORD_WEBHOOK_URL }}
+          name: Build Reporter
+          level: notice
+          title: Build Status
+          message: This is a notice message.
+
+      - uses: ./
+        with:
+          url: ${{ secrets.DISCORD_WEBHOOK_URL }}
+          name: Build Reporter
+          level: warning
+          title: Build Status
+          message: This is a warning message.
+
+      - uses: ./
+        with:
+          url: ${{ secrets.DISCORD_WEBHOOK_URL }}
+          name: Build Reporter
+          level: error
+          title: Build Status
+          message: This is an error message.
