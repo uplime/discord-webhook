@@ -17,7 +17,7 @@ class WebhookResponse:
     return self.code >= 200 and self.code < 300
 
 class Webhook:
-  def __init__(self, url, username=None, avatar=None):
+  def __init__(self, url, user=None, avatar=None):
     self.url = url
     self.username = username
     self.avatar = avatar
@@ -33,13 +33,10 @@ class Webhook:
       "User-Agent": "gh/uplime/discord-webhook"
     })
 
-  def wire(self, msg, embed=False, color=None, title=None):
-    if embed:
-      self.payload["embeds"] = [
-        {"color": color, "title": title, "description": msg}
-      ]
-    else:
-      self.payload["content"] = msg
+  def wire(self, msg, title=None):
+    self.payload["embeds"] = [
+      {"color": msg.color(), "title": title, "description": str(msg)}
+    ]
 
     try:
       res = self.session.post(self.url, json=self.payload, timeout=5)
