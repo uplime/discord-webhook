@@ -1,7 +1,11 @@
 ---
 
-name: Discord Webhook
+name: Discourier
 description: Write to a Discord webhook.
+
+branding:
+  icon: bell
+  color: green
 
 inputs:
   url:
