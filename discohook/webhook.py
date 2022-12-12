@@ -19,7 +19,7 @@ class WebhookResponse:
 class Webhook:
   def __init__(self, url, user=None, avatar=None):
     self.url = url
-    self.username = username
+    self.username = user
     self.avatar = avatar
 
     self.payload = {
