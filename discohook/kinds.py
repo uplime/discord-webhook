@@ -13,7 +13,7 @@ class WebhookMessage:
     attempt = discohook.util.lookup("RUN_ATTEMPT", prefix="GITHUB")
     repo = discohook.util.lookup("REPOSITORY", prefix="GITHUB")
     run = discohook.util.lookup("RUN_NUMBER", prefix="GITHUB")
-    run_id = discohook.util.lookup("RUN_ID", PREFIX="GITHUB")
+    run_id = discohook.util.lookup("RUN_ID", prefix="GITHUB")
     sha = discohook.util.lookup("SHA", prefix="GITHUB")
     url = discohook.util.lookup("SERVER_URL", prefix="GITHUB")
 
