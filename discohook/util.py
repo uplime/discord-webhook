@@ -1,3 +1,5 @@
+import os
+
 def lookup(key, prefix="INPUT"):
   val = os.getenv(key, f"{prefix}_{key.upper()}")
   tested_val = val.lower()

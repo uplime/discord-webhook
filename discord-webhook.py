@@ -2,7 +2,6 @@ import discohook.kinds
 import discohook.logger
 import discohook.util
 import discohook.webhook
-import os
 
 url = discohook.util.lookup("url")
 usr = discohook.util.lookup("name")
