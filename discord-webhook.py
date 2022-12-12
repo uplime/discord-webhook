@@ -3,6 +3,8 @@ import discohook.logger
 import discohook.util
 import discohook.webhook
 
+logger = discohook.logger.Logger()
+
 url = discohook.util.lookup("url")
 usr = discohook.util.lookup("name")
 pfp = discohook.util.lookup("avatar")
