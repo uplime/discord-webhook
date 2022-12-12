@@ -31,7 +31,7 @@ class WebhookMessage:
       payload.append(f"Run [#{run}]({action_url}/{run_id}) triggered by [{actor}]({repo_url}/{actor})")
 
     payload.append("")
-    payload.append(f"{type(self).__name__.lower()}: {self.msg}")
+    payload.append(f"**{type(self).__name__[7:].upper()}** {self.msg}")
     return "\n".join(payload)
 
   def __str__(self):
