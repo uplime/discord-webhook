@@ -35,7 +35,7 @@ Apply the standard message template.
 ## Example usage
 
 ```yaml
-uses: actions/discord-webhook@v1
+uses: uplime/discord-webhook@v1.1
 with:
   url: https://discord.com/api/webhooks/123457890/correct-horse-battery-staple
   level: error
