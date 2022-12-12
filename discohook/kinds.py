@@ -28,7 +28,7 @@ class WebhookMessage:
     if attempt > 1:
       payload.append(f"Re-run of [#{run}]({action_url}/{run_id}) triggered by [{actor}]({repo_url}/{actor})")
     else:
-      payload.append(f"Run [#{run}]({action_url}/{run_id}) triggered by [{actor}]({repo_url}/{actor})")
+      payload.append(f"Run [#{run}]({action_url}/{run_id}) triggered by [{actor}]({url}/{actor})")
 
     payload.append("")
     payload.append(f"**{type(self).__name__[7:].upper()}** {self.msg}")
